@@ -1,0 +1,21 @@
+services:
+  turnos:
+    build: .
+    container_name: turnos-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - MOM_WHATSAPP=${MOM_WHATSAPP}
+      - BUSINESS_NAME=${BUSINESS_NAME}
+      - TIMEZONE=America/Argentina/Cordoba
+    volumes:
+      # Los datos persisten aunque el contenedor se reinicie o actualice
+      - turnos-data:/app/data
+
+volumes:
+  turnos-data:
