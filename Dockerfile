@@ -1,13 +1,15 @@
 # ── Etapa 1: Build del frontend React ──────────────────────────────────────────
 FROM node:20-alpine AS frontend-builder
 
-WORKDIR /app/front
+WORKDIR /app
 
-COPY front/package*.json ./
-RUN npm install
+COPY front/package*.json ./front/
+RUN cd front && npm install
 
-COPY front/ ./
-RUN npm run build
+COPY front/ ./front/
+
+# El outDir en vite.config.js es '../public', o sea /app/public
+RUN cd front && npm run build
 
 # ── Etapa 2: Server Node.js listo para producción ─────────────────────────────
 FROM node:20-alpine
@@ -19,7 +21,8 @@ RUN npm install --omit=dev
 
 COPY server/ ./server/
 
-COPY --from=frontend-builder /app/front/dist ./public
+# El build quedó en /app/public en la etapa anterior
+COPY --from=frontend-builder /app/public ./public
 
 RUN mkdir -p /app/data
 
