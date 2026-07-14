@@ -61,7 +61,7 @@ function MainClientContent() {
   }, [selectedDate, message]);
 
   return (
-    <div style={{ minHeight: "(100vh-16px)", backgroundColor: token.colorBgElevated, padding: "40px 16px" }}>
+    <div style={{ minHeight: "(100vh-16px)", padding: "40px 16px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
         {/* Cabecera de la App */}

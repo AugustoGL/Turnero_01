@@ -5,7 +5,7 @@ import { adminService } from '../../services';
 import dayjs from 'dayjs';
 
 const DIAS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-const HORAS = Array.from({ length: 24 }, (_, i) => i);
+const HORAS = Array.from({ length: 25 }, (_, i) => i);
 
 function agruparBloques(blocks) {
   const sorted = [...blocks].sort((a, b) => a.day_of_week - b.day_of_week || a.hour - b.hour);

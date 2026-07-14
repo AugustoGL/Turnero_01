@@ -123,7 +123,7 @@ export default function App() {
       <div
         style={{
           margin: "0 auto",
-          backgroundColor: "#fff",
+          backgroundColor:  "#F7F8F4",
           minHeight: "100vh",
         }}
       >
